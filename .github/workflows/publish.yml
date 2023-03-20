@@ -1,0 +1,23 @@
+name: Publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    name: Publish test workflow
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - uses: aqueducthq/update-aqueduct-workflow@v1
+        with:
+          server_address: 3.17.199.234
+          api_key: ${{ secrets.AQUEDUCT_API_KEY_TEST }}
+          path: workflow/test.py
