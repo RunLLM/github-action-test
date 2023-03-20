@@ -9,4 +9,5 @@ def test():
 
 result = test()
 
+
 client.publish_flow(name="test", artifacts=[result])
